@@ -1,7 +1,26 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QWidget
+from PyQt6.QtCore import QSize, Qt
+from PyQt6.QtWidgets import QApplication, QWidget, QMainWindow, QPushButton
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("My App")
+        button=QPushButton("press me!")
+        button.setCheckable(True)
+        button.clicked.connect(self.welcome_warrior)
+        
+
+        self.setCentralWidget(button)
+        self.setFixedSize(QSize(400, 300))
+
+    def welcome_warrior(self):
+        print("Get ready to battle")S
+
 
 app=QApplication(sys.argv)
-window=QWidget()
+window=MainWindow()
 window.show()
 app.exec()
+
